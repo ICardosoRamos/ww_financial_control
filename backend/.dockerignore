@@ -1,0 +1,11 @@
+# Ignore everything.
+**
+
+
+# Except the following.
+!irwyngs_financial_control
+!manage.py
+!entrypoint.sh
+!gunicorn.conf.py
+!static
+!requirements.txt
