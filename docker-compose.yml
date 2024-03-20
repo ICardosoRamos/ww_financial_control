@@ -1,14 +1,16 @@
 version: '4'
 
 services:
-  app:
+  backend:
     build: ./backend
     restart: unless-stopped
     environment:
       - AMBIENTE=desenvolvimento
     entrypoint:
-      - /home/user/app/entrypoint.sh
+      - /home/user/backend/entrypoint.sh
     volumes:
-      - ./backend/:/home/user/app
+      - ./backend/:/home/user/backend
+    ports:
+      - "8000:8000"
 
 

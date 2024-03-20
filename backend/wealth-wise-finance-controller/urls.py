@@ -1,5 +1,5 @@
 """
-URL configuration for irwyngs_financial_control project.
+URL configuration for wealth-wise-finance-controller project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.2/topics/http/urls/

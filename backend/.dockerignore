@@ -3,7 +3,7 @@
 
 
 # Except the following.
-!irwyngs_financial_control
+!wealth-wise-finance-controller
 !manage.py
 !entrypoint.sh
 !gunicorn.conf.py

@@ -1,5 +1,5 @@
-# bind = '0.0.0.0:5000'
+bind = '0.0.0.0:8000'
 workers = 1
-wsgi_app = 'irwyngs_financial_control.wsgi'
+wsgi_app = 'wealth-wise-finance-controller.wsgi'
 reload = True
 capture_output = True

@@ -1,5 +1,5 @@
 """
-ASGI config for irwyngs_financial_control project.
+ASGI config for wealth-wise-finance-controller project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "irwyngs_financial_control.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "wealth-wise-finance-controller.settings")
 
 application = get_asgi_application()

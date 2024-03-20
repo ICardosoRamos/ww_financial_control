@@ -42,7 +42,7 @@ ENV PYTHONBUFFERED 1
 ENV PIP_NO_CACHE_DIR 1
 ENV VIRTUAL_ENV /opt/venv
 ENV HOME /home/user
-ENV APP_HOME ${HOME}/app
+ENV BACKEND_HOME ${HOME}/backend
 
 
 RUN apt-get update && apt-get install -y poppler-utils curl && rm -rf /var/lib/apt/lists/*
@@ -50,9 +50,9 @@ RUN mkdir -p ${HOME}
 RUN groupadd -r user && \
     useradd -r -g user -d ${HOME} -s /sbin/nologin -c "Docker image user" user
 
-RUN mkdir ${APP_HOME}
+RUN mkdir ${BACKEND_HOME}
 
-WORKDIR ${APP_HOME}
+WORKDIR ${BACKEND_HOME}
 
 
 COPY --from=python_builder ${VIRTUAL_ENV} ${VIRTUAL_ENV}
@@ -62,7 +62,7 @@ COPY . .
 
 RUN chown -R user:user ${HOME}
 
-RUN chmod +x /home/user/app/entrypoint.sh
+RUN chmod +x /home/user/backend/entrypoint.sh
 
 
-CMD [ "python", "manage.py", "runserver" ]
+CMD [ "python3", "manage.py", "runserver", "0:0:0:0:8000" ]
