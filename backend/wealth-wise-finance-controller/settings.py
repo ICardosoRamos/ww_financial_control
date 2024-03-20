@@ -113,7 +113,6 @@ DATABASES = {
     }
 }
 
-STATIC_ROOT = os.path.join(BASE_DIR, "static", "django")
 
 
 # Password validation
@@ -146,11 +145,15 @@ USE_I18N = True
 
 USE_TZ = True
 
+STATICFILES_DIRS = [
+    # os.path.join(BASE_DIR, "static/"),
+]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = "static/django/"
+STATIC_ROOT = os.path.join(BASE_DIR, "static", "django")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

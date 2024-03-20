@@ -10,7 +10,10 @@ services:
       - /home/user/backend/entrypoint.sh
     volumes:
       - ./backend/:/home/user/backend
+      - static_django:/home/user/backend/static/django
     ports:
       - "8000:8000"
 
 
+volumes:
+  static_django:

@@ -59,6 +59,7 @@ COPY --from=python_builder ${VIRTUAL_ENV} ${VIRTUAL_ENV}
 ENV PATH "${VIRTUAL_ENV}/bin:${PATH}"
 
 COPY . .
+# COPY ./static/ ./static/django/
 
 RUN chown -R user:user ${HOME}
 
