@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 
 from pathlib import Path
-from decouple import config
+from decouple import config # type: ignore
 
 
 
@@ -52,7 +52,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-	"rest_framework"
+	"rest_framework",
+    "users"
 ]
 
 REST_FRAMEWORK = {
@@ -60,6 +61,8 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
 }
+
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -104,15 +107,20 @@ USE_TZ = False
 
 
 # Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
+# DATABASE CHANGED FROM SQLITE3 TO POSTGRESQL
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'ww_financial_control_db',
+        'USER': 'ww_financial_control_user',
+        'PASSWORD': 'admin',
+        'HOST': 'db',
+        'PORT': 5432,
     }
 }
 
+# AUTH_USER_MODEL = 'users.User'
 
 
 # Password validation
@@ -144,10 +152,6 @@ TIME_ZONE = "UTC"
 USE_I18N = True
 
 USE_TZ = True
-
-STATICFILES_DIRS = [
-    # os.path.join(BASE_DIR, "static/"),
-]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/

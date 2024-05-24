@@ -1,4 +1,4 @@
-version: '4'
+
 
 services:
   backend:
@@ -8,12 +8,30 @@ services:
       - AMBIENTE=desenvolvimento
     entrypoint:
       - /home/user/backend/entrypoint.sh
+    depends_on:
+      - db
+      - pgadmin
     volumes:
       - ./backend/:/home/user/backend
-      - static_django:/home/user/backend/static/django
     ports:
       - "8000:8000"
 
+  db:
+    build: ./postgresql
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+      - postgres_data:/tmp # Adjusted line
+
+
+  pgadmin:
+    image: dpage/pgadmin4
+    ports: [ "5050:80" ]
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@mail.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    depends_on:
+      - db
+
 
 volumes:
-  static_django:
+  postgres_data:
