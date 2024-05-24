@@ -1,0 +1,12 @@
+# Ignore everything.
+**
+
+
+# Except the following.
+!wealth-wise-finance-controller
+!manage.py
+!entrypoint.sh
+!gunicorn.conf.py
+!static
+!requirements.txt
+!users
