@@ -7,8 +7,6 @@ COPY ww_financial_control_db.sql /docker-entrypoint-initdb.d/
 ENV POSTGRES_DB=ww_financial_control_db
 ENV POSTGRES_USER=ww_financial_control_user
 ENV POSTGRES_PASSWORD=admin
-# ENV POSTGRES_INITDB_ARGS="--no-accept-eula"
-# ENV POSTGRES_HOST_AUTH_METHOD=trust
 
 # Expose the port
 EXPOSE 5432
