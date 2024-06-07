@@ -42,6 +42,17 @@ SECRET_KEY = "django-insecure-0t=6=dy)7q5n07*9fv7xazga8hixffbqx9ujn2j**6fj0+4t4-
 
 ALLOWED_HOSTS = []
 
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:5173'
+]
+
+
+# CSRF_TRUSTED_ORIGINS = [
+#     'http://localhost:5173',  # your Vite app's URL
+# ]
+
+
+
 
 # Application definition
 
@@ -54,13 +65,18 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
 	"rest_framework",
     "rest_framework.authtoken",
+    "corsheaders",
     "users",
+    "financial_groups",
 ]
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
 }
 
 AUTH_USER_MODEL = 'users.User'
@@ -69,6 +85,7 @@ AUTH_USER_MODEL = 'users.User'
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    'corsheaders.middleware.CorsMiddleware',
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
