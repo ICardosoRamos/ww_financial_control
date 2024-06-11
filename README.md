@@ -4,28 +4,28 @@
 # Wealth-Wise Financial Control
 
 A group-based financial control project, for the ones who wants to shares its financial records with someone.
-## Introdução
+## Intro
 
 My name is Irwyng and this is a simple financial controller helpful app. I hope u enjoy it!
 
 In 2023 i had an idea to start some money saving, with the goal of getting some passive rentability. Then i started to download every finance controller app that i encountered in the app store, and each one has its differences, of course, and each one had its pros and cons, but for me the main dislike was that I couldn't share my income and expenses with anyone, like, I wanted to somehow be able to share my records in a kind of group or connection, so that others people, as in a family group, could interact, modify and register their own records, as if the money were one for all.
 
 As I couldn't find any that could do this, at least not for free (and don't get me wrong, I bet there must be an app somewhere that does this and possibly does it perfectly, I'm just too lazy to go to the meeting him), I decided to make my own, both to be able to use it in production (one day) and to show it in my portfolio here on GitHub!
-## Rodando localmente
+## Running Locally
 
-Clone o projeto(Com SSH)
+Cloning project(with SSH)
 
 ```bash
   git clone git@github.com:ICardosoRamos/ww_financial_control.git
 ```
 
-Entre no diretório do projeto
+Get into the project's home directory
 
 ```bash
   cd ww_financial_control/
 ```
 
-Inicie o backend
+Start the server(backend)
 
 ```bash
   docker compose up --build
@@ -35,14 +35,14 @@ or
   docker-compose up --build
 ```
 
-Inicie o frontend
+Start the server(frontend)
 
 ```bash
   cd pwa/ && npm install && npx expo start
 ```
 
 
-## Stack utilizada
+## Stack
 
 **Front-end:** React-Native, Expo, Native-Base
 
