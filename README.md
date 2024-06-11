@@ -50,11 +50,9 @@ Inicie o frontend
 
 
 <div align="center">
-  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black&style=for-the-badge" height="30" alt="javascript logo"  />
-  <img width="12" />
   <img src="https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white&style=for-the-badge" height="30" alt="typescript logo"  />
   <img width="12" />
-  <img src="https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=black&style=for-the-badge" height="30" alt="react logo"  />
+  <img src="https://img.shields.io/badge/React%20Native-61DAFB?logo=react-native&logoColor=black&style=for-the-badge" height="30" alt="react native logo"  />
   <img width="12" />
   <img src="https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white&style=for-the-badge" height="30" alt="html5 logo"  />
   <img width="12" />
@@ -67,16 +65,6 @@ Inicie o frontend
   <img src="https://img.shields.io/badge/Apple-000000?logo=apple&logoColor=white&style=for-the-badge" height="30" alt="apple logo"  />
   <img width="12" />
   <img src="https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white&style=for-the-badge" height="30" alt="docker logo"  />
-  <img width="12" />
-  <img src="https://img.shields.io/badge/Ubuntu-E95420?logo=ubuntu&logoColor=white&style=for-the-badge" height="30" alt="ubuntu logo"  />
-  <img width="12" />
-  <img src="https://img.shields.io/badge/Bootstrap-7952B3?logo=bootstrap&logoColor=white&style=for-the-badge" height="30" alt="bootstrap logo"  />
-  <img width="12" />
-  <img src="https://img.shields.io/badge/Git-F05032?logo=git&logoColor=white&style=for-the-badge" height="30" alt="git logo"  />
-  <img width="12" />
-  <img src="https://img.shields.io/badge/npm-CB3837?logo=npm&logoColor=white&style=for-the-badge" height="30" alt="npm logo"  />
-  <img width="12" />
-  <img src="https://img.shields.io/badge/MUI-007FFF?logo=mui&logoColor=white&style=for-the-badge" height="30" alt="materialui logo"  />
   <img width="12" />
   <img src="https://img.shields.io/badge/Django-092E20?logo=django&logoColor=white&style=for-the-badge" height="30" alt="django logo"  />
 </div>
