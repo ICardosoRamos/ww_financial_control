@@ -1,5 +1,5 @@
 
-![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png)
+![fotor-ai-202406072314](https://github.com/ICardosoRamos/ww_financial_control/assets/111356794/24bb1f66-e46c-4e26-8521-6facee966a48)
 
 # Wealth-Wise Financial Control
 
