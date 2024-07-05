@@ -1,4 +1,3 @@
-
 from rest_framework.viewsets import ModelViewSet, GenericViewSet
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.authentication import TokenAuthentication
@@ -13,41 +12,43 @@ from .serializers import UserSerializer, UserLoginAndLogoutSerializer
 
 
 class UserVS(ModelViewSet):
-	queryset = get_user_model().objects.all()
-	serializer_class = UserSerializer
-	permission_classes = [IsAuthenticated]
-	authentication_classes = [TokenAuthentication]
+    queryset = get_user_model().objects.all()
+    serializer_class = UserSerializer
+    permission_classes = [IsAuthenticated]
+    authentication_classes = [TokenAuthentication]
 
 
 class UserLoginAndLogout(GenericViewSet):
-	permission_classes = [AllowAny]
-	serializer_class = UserLoginAndLogoutSerializer
+    permission_classes = [AllowAny]
+    serializer_class = UserLoginAndLogoutSerializer
 
-	@action(methods=['post'], detail=False, url_path='login')
-	def login(self, request):
-		email = request.data.get('email')
-		password = request.data.get('password')
-		user_instance = get_user_model().objects.get(email=email)
-		user = authenticate(username=user_instance.username, password=password)
-		
-		if user is not None:
-			login(request, user)
-			token, _ = Token.objects.get_or_create(user=user)
-			
-			return Response({'token': token.key})
-		else:
-			return Response({'error': 'Invalid credentials'}, status=401)
+    @action(methods=["post"], detail=False, url_path="login")
+    def login(self, request):
+        email = request.data.get("email")
+        password = request.data.get("password")
+        user_instance = get_user_model().objects.get(email=email)
+        user = authenticate(username=user_instance.username, password=password)
 
-	@action(methods=['post'], detail=False, url_path='logout')
-	def logout(self, request):
-		logout(request)
-		return Response(
-			{'success': 'Logged out successfully'}, status=HTTP_200_OK
-		)
-	
-	@action(methods=['get'], detail=False, url_path='teste')
-	def teste(self, request):
-		print(5)
-		return Response(
-			{'success': 'Logged out successfully'}, status=HTTP_200_OK
-		)
+        if user is not None:
+            login(request, user)
+            token, _ = Token.objects.get_or_create(user=user)
+
+            return Response({"token": token.key})
+        else:
+            return Response({"error": "Invalid credentials"}, status=401)
+
+    @action(methods=["post"], detail=False, url_path="logout")
+    def logout(self, request):
+        try:
+            token = Token.objects.get(user=request.user)
+            token.delete()
+        except Token.DoesNotExist:
+            pass
+        finally:
+            logout(request)
+            return Response({"success": "Logged out successfully"}, status=HTTP_200_OK)
+
+    @action(methods=["get"], detail=False, url_path="teste")
+    def teste(self, request):
+        print(5)
+        return Response({"success": "Logged out successfully"}, status=HTTP_200_OK)

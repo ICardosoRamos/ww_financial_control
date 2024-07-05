@@ -9,14 +9,14 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
+
 import os
 
 from pathlib import Path
-from decouple import config # type: ignore
+from decouple import config  # type: ignore
 
 
-
-AMBIENTE = config('AMBIENTE')
+AMBIENTE = config("AMBIENTE")
 
 if AMBIENTE == "producao":
     from .settings_production import *  # noqa: F401, F403
@@ -40,18 +40,16 @@ SECRET_KEY = "django-insecure-0t=6=dy)7q5n07*9fv7xazga8hixffbqx9ujn2j**6fj0+4t4-
 # SECURITY WARNING: don't run with debug turned on in production!
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["192.168.100.137", "localhost"]
 
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:5173'
-]
+# CORS_ALLOWED_ORIGINS = [
+#     'http://192.168.100.137:8000'
+# ]
 
 
 # CSRF_TRUSTED_ORIGINS = [
 #     'http://localhost:5173',  # your Vite app's URL
 # ]
-
-
 
 
 # Application definition
@@ -63,7 +61,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-	"rest_framework",
+    "rest_framework",
     "rest_framework.authtoken",
     "corsheaders",
     "users",
@@ -71,21 +69,19 @@ INSTALLED_APPS = [
 ]
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
-    ),
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',
+    "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.TokenAuthentication",
     ],
 }
 
-AUTH_USER_MODEL = 'users.User'
+AUTH_USER_MODEL = "users.User"
 
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
-    'corsheaders.middleware.CorsMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -129,13 +125,13 @@ USE_TZ = False
 # DATABASE CHANGED FROM SQLITE3 TO POSTGRESQL
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ww_financial_control_db',
-        'USER': 'ww_financial_control_user',
-        'PASSWORD': 'admin',
-        'HOST': 'db',
-        'PORT': 5432,
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "ww_financial_control_db",
+        "USER": "ww_financial_control_user",
+        "PASSWORD": "admin",
+        "HOST": "db",
+        "PORT": 5432,
     }
 }
 
