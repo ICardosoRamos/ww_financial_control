@@ -4,10 +4,10 @@
     "slug": "pwa",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/ww_financial_control_logo_version_2.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/ww_financial_control_logo_version_2.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -16,15 +16,13 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/ww_financial_control_logo_version_2.png",
         "backgroundColor": "#ffffff"
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/ww_financial_control_logo_version_2.png"
     },
-    "plugins": [
-      "expo-font"
-    ]
+    "plugins": ["expo-font"]
   }
 }

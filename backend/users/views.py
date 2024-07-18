@@ -35,20 +35,17 @@ class UserLoginAndLogout(GenericViewSet):
 
             return Response({"token": token.key})
         else:
-            return Response({"error": "Invalid credentials"}, status=401)
+            return Response({"error": "Credenciais inválidas!"}, status=401)
 
     @action(methods=["post"], detail=False, url_path="logout")
     def logout(self, request):
         try:
-            token = Token.objects.get(user=request.user)
-            token.delete()
-        except Token.DoesNotExist:
-            pass
-        finally:
-            logout(request)
-            return Response({"success": "Logged out successfully"}, status=HTTP_200_OK)
 
-    @action(methods=["get"], detail=False, url_path="teste")
-    def teste(self, request):
-        print(5)
-        return Response({"success": "Logged out successfully"}, status=HTTP_200_OK)
+            email = request.data.get("email")
+            user_instance = get_user_model().objects.get(email=email)
+            token = Token.objects.get(user=user_instance)
+            token.delete()
+            logout(request)
+            return Response({"success": "Deslogado com sucesso!"}, status=HTTP_200_OK)
+        except Token.DoesNotExist:
+            return Response({"error": "Erro ao tentar se deslogar do sistema!"})

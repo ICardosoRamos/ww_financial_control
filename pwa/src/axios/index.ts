@@ -54,33 +54,5 @@ export default function useFetch(token: string) {
     }) as TReturn;
   }
 
-  // const post = async (url: string, requestData?: any) => {
-  //   let requestParams: AxiosRequestConfig = {};
-
-  //   // Se tem token é pq está logado e precisa do Authorization
-  //   if (token) {
-
-  //     const token = await AsyncStorage.getItem("@token");
-
-  //     requestParams = {
-  //       ...requestParams,
-  //       headers: {
-  //         Authorization: `Token ${token}`,
-  //       },
-  //     };
-  //   }
-
-  //   return new Promise((resolve, reject) => {
-  //     axios
-  //       .post(url, requestData, requestParams)
-  //       .then((response) => {
-  //         resolve(response);
-  //       })
-  //       .catch((error) => {
-  //         reject(error);
-  //       });
-  //   });
-  // };
-
   return { get, post };
 }

@@ -1,43 +1,58 @@
 import React from "react";
 import useFetch from "../axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { LoadingContext } from "./LoadingContext";
 
-export const AuthContext = React.createContext<null | {
-  handleSetToken: (value: string) => void;
+type TUserAuth = {
+  token: string;
+  email: string;
+  keepsLoggedInWithBiometric: boolean;
+};
+
+type TAuthContext = {
   handleLogin: (data: { email: string; password: string }) => Promise<{
     data: {
       token: string;
     };
   }>;
-  token: string;
-  handleLogout: () => void;
-}>(null);
+  handleLogout: (data: { email: string }) => Promise<{
+    data: {
+      success: string;
+    };
+  }>;
+  userAuth: TUserAuth;
+  setUserAuth: React.Dispatch<React.SetStateAction<TUserAuth>>;
+};
+
+export const InitialUserAuth = {
+  token: "",
+  email: "",
+  keepsLoggedInWithBiometric: false,
+};
+
+export const AuthContext = React.createContext<TAuthContext>({
+  handleLogin: async () => ({ data: { token: "" } }),
+  handleLogout: async () => ({ data: { success: "" } }),
+  userAuth: InitialUserAuth,
+  setUserAuth: () => {},
+});
 
 export const AuthContextProvider: React.FC<{
   children: React.ReactNode;
 }> = ({ children }) => {
-  const [token, setToken] = React.useState("");
-
-  const { loading, setLoading } = React.useContext(LoadingContext);
-
-  const axios = useFetch(token);
+  const [userAuth, setUserAuth] = React.useState<TUserAuth>(InitialUserAuth);
 
   React.useEffect(() => {
-    console.log(loading, "dentro do effect de auth");
-    setLoading(true);
-    // AsyncStorage.getItem("@token")
-    //   .then((response) => {
-    //     setToken(response as string);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
+    AsyncStorage.getItem("@userAuth")
+      .then((response) => {
+        if (!response) return;
+        setUserAuth(JSON.parse(response));
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }, []);
 
-  const handleSetToken = React.useCallback((value: string) => {
-    return setToken(value);
-  }, []);
+  const axios = useFetch(userAuth.token);
 
   const handleLogin = React.useCallback(
     async (data: { email: string; password: string }) => {
@@ -51,26 +66,23 @@ export const AuthContextProvider: React.FC<{
     []
   );
 
-  const handleLogout = React.useCallback(() => {
-    axios
-      .post("users/auth/logout/")
-      .then(async () => {
-        await AsyncStorage.removeItem("@token");
-        setToken("");
-      })
-      .catch((error) => {
-        console.log("teste erro");
-      });
+  const handleLogout = React.useCallback(async (data: { email: string }) => {
+    const response = await axios.post<
+      { email: string },
+      { data: { success: string } }
+    >("users/auth/logout/", data);
+
+    return response;
   }, []);
 
   const providerValue = React.useMemo(
     () => ({
       handleLogin: handleLogin,
-      token: token,
-      handleSetToken: handleSetToken,
       handleLogout: handleLogout,
+      userAuth: userAuth,
+      setUserAuth: setUserAuth,
     }),
-    [handleLogin, token, handleLogout]
+    [handleLogin, handleLogout, userAuth, setUserAuth]
   );
 
   return (
