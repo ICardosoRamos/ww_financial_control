@@ -7,7 +7,7 @@ import sys
 def main():
     """Run administrative tasks."""
     os.environ.setdefault(
-        "DJANGO_SETTINGS_MODULE", "wealth-wise-finance-controller.settings"
+        "DJANGO_SETTINGS_MODULE", "ww-financial-control.settings"
     )
     try:
         from django.core.management import execute_from_command_line

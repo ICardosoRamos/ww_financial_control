@@ -1,5 +1,5 @@
 """
-WSGI config for wealth-wise-finance-controller project.
+WSGI config for ww-financial-control project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "wealth-wise-finance-controller.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "ww-financial-control.settings")
 
 application = get_wsgi_application()

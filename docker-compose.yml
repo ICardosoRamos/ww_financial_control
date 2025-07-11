@@ -1,11 +1,9 @@
-
-
 services:
   backend:
     build: ./backend
     restart: unless-stopped
     environment:
-      - AMBIENTE=desenvolvimento
+      - AMBIENTE=development
     entrypoint:
       - /home/user/backend/entrypoint.sh
     depends_on:
@@ -22,7 +20,6 @@ services:
       - postgres_data:/var/lib/postgresql/data/
       - postgres_data:/tmp # Adjusted line
 
-
   pgadmin:
     image: dpage/pgadmin4
     ports: [ "5050:80" ]
@@ -31,7 +28,6 @@ services:
       PGADMIN_DEFAULT_PASSWORD: admin
     depends_on:
       - db
-
 
 volumes:
   postgres_data:
